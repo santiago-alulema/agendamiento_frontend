@@ -25,10 +25,12 @@ export const UserAuthStore = () => {
         dispatch( onChecking() );
         try {
             const { data } = await axios.post(`${process.env.REACT_APP_URL_BASE_API}auth/create-user`,user);
-            localStorage.setItem('token', data.token );
-            localStorage.setItem('token-init-date', new Date().getTime() );
-            dispatch( onLogin({ firstname: data.firstname, lastname: data.lastname, uid: data.uid }) );
-            
+            console.log(data.status)
+            if (data.status !== false){
+                localStorage.setItem('token', data.token );
+                localStorage.setItem('token-init-date', new Date().getTime() );
+                dispatch( onLogin({ firstname: data.firstname, lastname: data.lastname, uid: data.uid }) );
+            }
         } catch (error) {
             dispatch( onLogout( error.response.data?.message || '--' ) );
             setTimeout(() => {

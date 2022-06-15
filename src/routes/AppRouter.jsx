@@ -4,6 +4,8 @@ import {LoginPages} from '../auth/pages'
 import {CalendarPage} from '../calendar/pages'
 import {UserAuthStore} from '../hooks'
 import { Navigate} from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 export const AppRouter = () => {
     const statusAuth = 'not-auth'
     const {checkAuthToken,status} = UserAuthStore();
@@ -14,7 +16,10 @@ export const AppRouter = () => {
 
     if(status ==='checking'){
       return(
-        <h3>CARGANDO...</h3>
+        <>
+           <LoginPages />
+        </>
+       
       )
     }
   return (

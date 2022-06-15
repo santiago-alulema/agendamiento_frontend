@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: ag-frontend
+    build: 
+      context: ./ #https://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:@github.com/Chrstnp/RadiFrontEnd.git#master
+      args:
+        - REACT_APP_URL_BASE_API:http://localhost:8089/api/
+    networks: 
+      - frontend
+
+networks: 
+  frontend:
+  
+volumes:
+  strapiUploads:

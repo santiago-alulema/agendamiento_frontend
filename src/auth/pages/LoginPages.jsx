@@ -48,6 +48,11 @@ export const LoginPages = () => {
                 email:registerEmail,
                 password:registerPassword
             })
+            {Swal.fire(
+                'BIENVENIDO!',
+                'Revise su correo electronico para validar su usuario!',
+                'success'
+              )}
         }else{
             startLogin({email: loginEmail, password: loginPassword})
         }
